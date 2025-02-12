@@ -22,6 +22,36 @@ li {
   list-style: none;
 }
 
+.cart-icon-container {
+  position: relative;
+  width: 100%;
+  max-width: 40px;
+}
+
+.overlay {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  min-width: 16px;
+  overflow: hidden;
+
+  top: 0px;
+  right: 0px;
+  background-color: purple;
+  color: white;
+  padding: 4px;
+  border-radius: 16px;
+  pointer-events: none;
+
+}
+
+
+
+
+/* From installation */
+
 .logo {
   height: 6em;
   padding: 1.5em;
