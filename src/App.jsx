@@ -10,18 +10,17 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header  />
       <div className="shop-wrapper">
         <section>
           <h2>Cart</h2>
           <CartDisplay />
         </section>
+        <section>
         <SearchBar
         filterText={filterText}
         onFilterTextChange={setFilterText}
         />
-        <section>
-          <h2>Products</h2>
           <ProductList filterText={filterText} />
         </section>
       </div>
