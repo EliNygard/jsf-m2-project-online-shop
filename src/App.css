@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -25,24 +25,25 @@ li {
 .cart-icon-container {
   position: relative;
   width: 100%;
-  max-width: 40px;
+  max-width: 80px;
 }
 
 .overlay {
   position: absolute;
-  align-items: center;
   display: flex;
-  height: 16px;
+  align-items: center;
   justify-content: center;
-  min-width: 16px;
   overflow: hidden;
-
-  top: 0px;
-  right: 0px;
-  background-color: purple;
-  color: white;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  top: -4px;
+  right: 8px;
+  background-color: #59168b;
   padding: 4px;
-  border-radius: 16px;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
   pointer-events: none;
 
 }
@@ -51,6 +52,7 @@ li {
 
 
 /* From installation */
+
 
 .logo {
   height: 6em;

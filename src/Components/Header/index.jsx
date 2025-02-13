@@ -7,12 +7,12 @@ const Header = () => {
 
     return (
         <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl">Header</h1>
+            <h1 className="text-2xl text-purple-900">The Online Shop</h1>
         <div className="cart-icon-container">
             <span className="cart-icon">
-            <AiOutlineShopping className="text-purple-900 w-full text-3xl" />
+            <AiOutlineShopping className="text-purple-900 w-full text-4xl" />
             </span>
-            <span className="text-xs">Shopping cart</span>
+            <span className="text-xs text-purple-900">Shopping cart</span>
             <span className="overlay">{cartQuantity}</span>
         </div>
         </div>
