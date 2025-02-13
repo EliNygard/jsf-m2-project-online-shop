@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../cartSlice";
 
 const CartDisplay = () => {
+  const dispatch = useDispatch()
+
   const products = useSelector((state) => state.cart.products);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
 
@@ -12,6 +15,8 @@ const CartDisplay = () => {
 
   return (
     <>
+    <h2>Cart</h2>
+    <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
       <ul>
         {products.map((product) => (
           <li key={product.id}>

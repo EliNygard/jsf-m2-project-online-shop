@@ -30,20 +30,25 @@ export const cartSlice = createSlice({
 
       // Recalculate the cart quantity by summing the quantity of all products
       state.cartQuantity = state.products.reduce(
-        (total, p) => total + p.quantity, 0
-      )
+        (total, p) => total + p.quantity,
+        0
+      );
 
       console.log("Current products in cart: ", state.products);
       console.log("Updated cart total: ", state.cartTotal);
       console.log("Total quantity of products in cart: ", state.cartQuantity);
-      
     },
     removeProduct: () => {
       //
     },
+    clearCart: (state) => {
+      state.products = initialState.products;
+      state.cartTotal = initialState.cartTotal;
+      state.cartQuantity = initialState.cartQuantity;
+    },
   },
 });
 
-export const { addProduct, removeProduct } = cartSlice.actions;
+export const { addProduct, removeProduct, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

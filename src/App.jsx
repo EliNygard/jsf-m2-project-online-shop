@@ -13,7 +13,7 @@ export default function App() {
       <Header  />
       <div className="shop-wrapper">
         <section>
-          <h2>Cart</h2>
+          
           <CartDisplay />
         </section>
         <section>
