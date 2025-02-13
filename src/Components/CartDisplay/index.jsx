@@ -23,7 +23,7 @@ const CartDisplay = () => {
         ))}
       </ul>
       <div>
-        <div>Total: {cartTotal} </div>
+        <div>Total: {cartTotal.toFixed(2)} </div>
       </div>
     </>
   );

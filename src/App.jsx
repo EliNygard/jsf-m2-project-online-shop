@@ -10,12 +10,12 @@ export default function App() {
       <div className="shop-wrapper">
 
       <section>
-        <h2>Products</h2>
-        <ProductList />
-      </section>
-      <section>
         <h2>Cart</h2>
         <CartDisplay />
+      </section>
+      <section>
+        <h2>Products</h2>
+        <ProductList />
       </section>
       </div>
     </div>

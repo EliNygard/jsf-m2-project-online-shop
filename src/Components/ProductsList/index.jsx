@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../cartSlice";
+import styles from './index.module.css'
 
 export function ProductList() {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export function ProductList() {
     <div>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
+          <li key={product.id} className={styles.list}>
             <img src={product.image.url} alt={product.title} />
             <h3>{product.title}</h3>
             <button onClick={() => dispatch(addProduct(product))}>
