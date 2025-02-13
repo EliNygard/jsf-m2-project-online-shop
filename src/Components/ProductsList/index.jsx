@@ -1,26 +1,34 @@
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../cartSlice";
-import styles from './index.module.css'
+import styles from "./index.module.css";
+import BaseButton from "../BaseButton";
+import PropTypes from "prop-types";
 
-export function ProductList() {
+export function ProductList({ filterText }) {
   const dispatch = useDispatch();
 
+  // Filter products based on the filterText (case-insensitive)
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(filterText.toLowerCase())
+  );
+
   return (
-    <div>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id} className={styles.list}>
-            <img src={product.image.url} alt={product.title} />
-            <h3>{product.title}</h3>
-            <button onClick={() => dispatch(addProduct(product))}>
-              Add to cart
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {filteredProducts.map((product) => (
+        <li key={product.id} className={styles.list}>
+          <img src={product.image.url} alt={product.title} />
+          <h3>{product.title}</h3>
+          <BaseButton onClick={() => dispatch(addProduct(product))}>
+            Add to cart
+          </BaseButton>
+        </li>
+      ))}
+    </ul>
   );
 }
+ProductList.propTypes = {
+  filterText: PropTypes.string.isRequired,
+};
 
 const products = [
   {
@@ -30,8 +38,8 @@ const products = [
     discountedPrice: 19.99,
     image: {
       url: "https://picsum.photos/id/200/200/300",
-      alt: ""
-    }
+      alt: "",
+    },
   },
   {
     id: 1,
@@ -40,8 +48,8 @@ const products = [
     discountedPrice: 12.99,
     image: {
       url: "https://picsum.photos/id/100/200/300",
-      alt: ""
-    }
+      alt: "",
+    },
   },
   {
     id: 2,
@@ -50,7 +58,7 @@ const products = [
     discountedPrice: 25.99,
     image: {
       url: "https://picsum.photos/id/400/200/300",
-      alt: ""
-    }
+      alt: "",
+    },
   },
 ];
