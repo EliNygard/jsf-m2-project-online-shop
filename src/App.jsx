@@ -2,50 +2,50 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Components/Layout";
-import { Home } from "./Components/Home";
+import { Home } from "./Components/Pages/Home";
 import { Products } from "./Components/Products";
-import { RouteNotFound } from "./Components/NotFound";
-import { Contact } from "./Components/Contact";
-import { ProductPage } from "./Components/ProductPage";
+import { RouteNotFound } from "./Components/Pages/NotFound";
+import { Contact } from "./Components/Pages/Contact";
+import { ProductPage } from "./Components/Pages/ProductPage";
 
 export default function App() {
   const [filterText, setFilterText] = useState("");
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
   // state for holding out loading state
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   // state for holding our error state
-  const [isError, setIsError] = useState(false)
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function getData() {
       try {
         // reset the error state is vase there is an error previously
-        setIsError(false)
+        setIsError(false);
         // turn on the loading state each time we do an api call
-        setIsLoading(true)
+        setIsLoading(true);
 
-        const response = await fetch("https://v2.api.noroff.dev/online-shop")
-        const json = await response.json()
-        setItems(json)
+        const response = await fetch("https://v2.api.noroff.dev/online-shop");
+        const json = await response.json();
+        setItems(json.data);
         console.log(json.data);
-        
+
         // clear the loading state after successfully fetching data
-        setIsLoading(false)
+        setIsLoading(false);
       } catch {
         // clear the loading state if we get an error and then set our error state to true
-        setIsLoading(false)
-        setIsError(true)
+        setIsLoading(false);
+        setIsError(true);
       }
     }
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   if (isLoading) {
-    return <div>Loading products...</div>
+    return <div>Loading products...</div>;
   }
 
   if (isError) {
-    return <div>Error loading data. Please try again</div>
+    return <div>Error loading data. Please try again</div>;
   }
 
   return (
@@ -55,7 +55,11 @@ export default function App() {
           <Route
             index
             element={
-              <Home filterText={filterText} setFilterText={setFilterText} items={items} />
+              <Home
+                filterText={filterText}
+                setFilterText={setFilterText}
+                items={items}
+              />
             }
           ></Route>
           <Route path="products" element={<Products />}></Route>

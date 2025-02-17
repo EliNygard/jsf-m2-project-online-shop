@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import CartDisplay from "../CartDisplay";
-import { ProductList } from "../ProductsList";
-import { SearchBar } from "../SearchBar";
-import ErrorBoundary from "../ErrorBoundary";
+import CartDisplay from "../../CartDisplay";
+import { ProductList } from "../../ProductsList";
+import { SearchBar } from "../../SearchBar";
+import ErrorBoundary from "../../ErrorBoundary";
 
 export function Home({ filterText, setFilterText, items }) {
   return (
