@@ -7,7 +7,7 @@ const Header = () => {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
 
   return (
-    <div className="flex justify-between items-center mb-4">
+    <header className="flex justify-between items-center mb-4">
       <h1 className="text-2xl text-purple-900">The Online Shop</h1>
       <HeaderNav />
       <div className="cart-icon-container">
@@ -17,7 +17,7 @@ const Header = () => {
         <span className="text-xs text-purple-900">Shopping cart</span>
         <span className="overlay">{cartQuantity}</span>
       </div>
-    </div>
+    </header>
   );
 };
 

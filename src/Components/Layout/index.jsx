@@ -3,11 +3,13 @@ import Header from "../Header";
 import { Footer } from "../Footer";
 
 export function Layout() {
-    return (
-        <div>
-            <Header></Header>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
-    )
+  return (
+    <>
+      <Header></Header>
+      <main>
+        <Outlet></Outlet>
+      </main>
+      <Footer></Footer>
+    </>
+  );
 }
