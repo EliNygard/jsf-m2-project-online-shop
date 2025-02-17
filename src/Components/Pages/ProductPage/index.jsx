@@ -1,37 +1,15 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useFetch } from "../../../hooks/useFetch";
 
 export function ProductPage() {
   // let params = useParams()
-
   // console.log("Product page with product id: ", params);
-
   let { id } = useParams();
   console.log("Product page with product id: ", id);
 
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    async function getData(url) {
-      try {
-        setIsLoading(true);
-        setIsError(false);
-
-        const response = await fetch(url);
-        const json = await response.json();
-
-        setData(json.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    getData(`https://v2.api.noroff.dev/online-shop/${id}`);
-  }, [id]);
+  const { data, isLoading, isError } = useFetch(
+    `https://v2.api.noroff.dev/online-shop/${id}`
+  );
 
   if (isLoading || !data) {
     return <div>Loading...</div>;
@@ -45,7 +23,7 @@ export function ProductPage() {
 
   return (
     <div>
-      <img src={data.image.url} alt={data.image.alt} />
+      {/* <img src={data.image.url} alt={data.image.alt} />
       <h1>{data.title}</h1>
       <p>{data.description}</p>
       <ul>
@@ -66,7 +44,7 @@ export function ProductPage() {
             )
           )
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 }
