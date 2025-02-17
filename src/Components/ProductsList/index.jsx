@@ -5,9 +5,10 @@ import BaseButton from "../BaseButton";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export function ProductList({ filterText }) {
+export function ProductList({ filterText, items }) {
   const dispatch = useDispatch();
 
+  const products = items
   // Filter products based on the filterText (case-insensitive)
   const filteredProducts = products.filter(
     (product) =>
@@ -46,40 +47,5 @@ export function ProductList({ filterText }) {
 }
 ProductList.propTypes = {
   filterText: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
 };
-
-const products = [
-  {
-    id: 0,
-    title: "Milk",
-    description: "A fresh milk straight from the cow",
-    price: 19.99,
-    discountedPrice: 19.99,
-    image: {
-      url: "https://picsum.photos/id/200/200/300",
-      alt: "",
-    },
-  },
-  {
-    id: 1,
-    title: "Bread",
-    description: "A must have for your breakfast",
-    price: 12.99,
-    discountedPrice: 12.99,
-    image: {
-      url: "https://picsum.photos/id/100/200/300",
-      alt: "",
-    },
-  },
-  {
-    id: 2,
-    title: "Cheese",
-    description: "A soft cheese for all your meals",
-    price: 25.99,
-    discountedPrice: 25.99,
-    image: {
-      url: "https://picsum.photos/id/400/200/300",
-      alt: "",
-    },
-  },
-];

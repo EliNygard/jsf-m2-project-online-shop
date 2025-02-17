@@ -3,7 +3,7 @@ import CartDisplay from "../CartDisplay";
 import { ProductList } from "../ProductsList";
 import { SearchBar } from "../SearchBar";
 
-export function Home({ filterText, setFilterText }) {
+export function Home({ filterText, setFilterText, items }) {
     
     return (
         <div>
@@ -17,7 +17,7 @@ export function Home({ filterText, setFilterText }) {
                 filterText={filterText}
                 onFilterTextChange={setFilterText}
               />
-              <ProductList filterText={filterText} />
+              <ProductList filterText={filterText} items={items} />
             </section>
             </div>
         </div>
@@ -27,4 +27,5 @@ export function Home({ filterText, setFilterText }) {
 Home.propTypes = {
     filterText: PropTypes.string.isRequired,
     setFilterText: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired,
 };
