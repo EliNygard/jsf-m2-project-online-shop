@@ -1,5 +1,6 @@
 import { AiOutlineShopping } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import { HeaderNav } from "../HeaderNav";
 
 const Header = () => {
   // const products = useSelector((state) => state.cart.products);
@@ -8,7 +9,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center mb-4">
       <h1 className="text-2xl text-purple-900">The Online Shop</h1>
-    
+      <HeaderNav />
       <div className="cart-icon-container">
         <span className="cart-icon">
           <AiOutlineShopping className="text-purple-900 w-full text-4xl" />

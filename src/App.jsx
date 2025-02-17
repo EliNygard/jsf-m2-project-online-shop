@@ -1,29 +1,32 @@
-import CartDisplay from "./Components/CartDisplay";
-import { ProductList } from "./Components/ProductsList";
 import "./App.css";
-import Header from "./Components/Header";
-import { SearchBar } from "./Components/SearchBar";
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./Components/Layout";
+import { Home } from "./Components/Home";
+import { Products } from "./Components/Products";
+import { RouteNotFound } from "./Components/NotFound";
+import { Contact } from "./Components/Contact";
+import { ProductPage } from "./Components/ProductPage";
 
 export default function App() {
-  const [filterText, setFilterText] = useState("")
+  const [filterText, setFilterText] = useState("");
 
   return (
     <div className="App">
-      <Header  />
-      <div className="shop-wrapper">
-        <section>
-          
-          <CartDisplay />
-        </section>
-        <section>
-        <SearchBar
-        filterText={filterText}
-        onFilterTextChange={setFilterText}
-        />
-          <ProductList filterText={filterText} />
-        </section>
-      </div>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <Home filterText={filterText} setFilterText={setFilterText} />
+            }
+          ></Route>
+          <Route path="products" element={<Products />}></Route>
+          <Route path="product/:id" element={<ProductPage />}></Route>
+          <Route path="contact" element={<Contact />}></Route>
+          <Route path="*" element={<RouteNotFound />}></Route>
+        </Route>
+      </Routes>
     </div>
   );
 }

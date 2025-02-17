@@ -3,6 +3,7 @@ import { addProduct } from "../../cartSlice";
 import styles from "./index.module.css";
 import BaseButton from "../BaseButton";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export function ProductList({ filterText }) {
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ export function ProductList({ filterText }) {
             <BaseButton onClick={() => dispatch(addProduct(product))}>
               Add to cart
             </BaseButton>
+            <Link to={`/product/${product.id}`}>
+            <BaseButton>View</BaseButton>
+            </Link>
           </li>
         ))}
       </ul>
