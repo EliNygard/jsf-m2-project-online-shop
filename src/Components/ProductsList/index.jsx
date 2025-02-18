@@ -58,5 +58,4 @@ export function ProductList({ filterText }) {
 }
 ProductList.propTypes = {
   filterText: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired,
 };

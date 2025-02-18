@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // Wrap <App /> with our react-redux Provider, passing in the store
 root.render(
   <BrowserRouter>
+  
     <Provider store={store}>
       <App />
     </Provider>

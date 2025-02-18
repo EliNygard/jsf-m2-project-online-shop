@@ -30,5 +30,4 @@ export function Home({ filterText, setFilterText }) {
 Home.propTypes = {
   filterText: PropTypes.string.isRequired,
   setFilterText: PropTypes.func.isRequired,
-  items: PropTypes.array.isRequired,
 };
