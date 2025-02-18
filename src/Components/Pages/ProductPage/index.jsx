@@ -5,7 +5,6 @@ export function ProductPage() {
   // let params = useParams()
   // console.log("Product page with product id: ", params);
   let { id } = useParams();
-  console.log("Product page with product id: ", id);
 
   const { data, isLoading, isError } = useFetch(
     `https://v2.api.noroff.dev/online-shop/${id}`
@@ -22,8 +21,8 @@ export function ProductPage() {
   console.log(data);
 
   return (
-    <div>
-      {/* <img src={data.image.url} alt={data.image.alt} />
+    <section>
+      <img src={data.image.url || "../../assets/react.svg"} alt={data.image.alt || "Default product image"} />
       <h1>{data.title}</h1>
       <p>{data.description}</p>
       <ul>
@@ -44,7 +43,7 @@ export function ProductPage() {
             )
           )
         )}
-      </ul> */}
-    </div>
+      </ul>
+    </section>
   );
 }
