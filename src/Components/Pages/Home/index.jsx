@@ -4,12 +4,13 @@ import { ProductList } from "../../ProductsList";
 import { SearchBar } from "../../SearchBar";
 import ErrorBoundary from "../../ErrorBoundary";
 
-export function Home({ filterText, setFilterText, items }) {
+export function Home({ filterText, setFilterText }) {
   return (
     <div>
       <h1>Home page</h1>
       <div className="shop-wrapper">
         <section>
+          
           <CartDisplay />
         </section>
         <section>
@@ -18,7 +19,7 @@ export function Home({ filterText, setFilterText, items }) {
             onFilterTextChange={setFilterText}
           />
           <ErrorBoundary>
-            <ProductList filterText={filterText} items={items} />
+            <ProductList filterText={filterText} />
           </ErrorBoundary>
         </section>
       </div>

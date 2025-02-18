@@ -4,13 +4,24 @@ import styles from "./index.module.css";
 import BaseButton from "../BaseButton";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
+import { baseUrl } from "../../api/Constants";
 
-export function ProductList({ filterText, items }) {
+export function ProductList({ filterText }) {
   const dispatch = useDispatch();
 
-  const products = items
+  const { data, isLoading, isError } = useFetch(baseUrl)
+
+  if (isLoading || !data) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Could not get product</div>;
+  }
+
   // Filter products based on the filterText (case-insensitive)
-  const filteredProducts = products.filter(
+  const filteredProducts = data.filter(
     (product) =>
       product.title.toLowerCase().includes(filterText.toLowerCase()) ||
       product.description?.toLowerCase().includes(filterText.toLowerCase())
