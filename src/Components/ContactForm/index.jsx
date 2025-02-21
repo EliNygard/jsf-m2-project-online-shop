@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const schema = yup
+const contactSchema = yup
   .object({
-    name: yup.string().min(3).max(30).required('Please enter your first name'),
-    email: yup.string().required('Please enter your email address'),
-    message: yup.string().min(3).max(2000).required('Please add a message'),
+    name: yup.string().min(3).max(30).required("Please enter your first name"),
+    email: yup.string().email().required("Please enter your email address"),
+    subject: yup.string().min(3).max(100).required("Please enter a subject for your message"),
+    message: yup.string().min(3).max(2000).required("Please add a message"),
   })
   .required();
 
@@ -16,7 +17,7 @@ export function ContactForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(contactSchema) });
 
   function onSubmit(data) {
     console.log(data);
@@ -32,6 +33,7 @@ export function ContactForm() {
         {...register("name")}
       />
       <p className="text-red-600">{errors.name?.message}</p>
+
       <label htmlFor="email">Your email address</label>
       <input
         className="border-2"
@@ -40,6 +42,16 @@ export function ContactForm() {
         {...register("email")}
       />
       <p className="text-red-600">{errors.email?.message}</p>
+
+      <label htmlFor="subject"></label>
+      <input
+        className="border-2"
+        type="text"
+        name="subject"
+        {...register("subject")}
+      />
+      <p className="text-red-600">{errors.subject?.message}</p>
+
       <label htmlFor="message">Write us your message</label>
       <input
         className="border-2"
