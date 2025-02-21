@@ -1,10 +1,12 @@
+import React from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { HeaderNav } from "../HeaderNav";
+import { RootState } from "../../app/store";
 
-const Header = () => {
+const Header: React.FC = () => {
   // const products = useSelector((state) => state.cart.products);
-  const cartQuantity = useSelector((state) => state.cart.cartQuantity);
+  const cartQuantity = useSelector((state: RootState) => state.cart.cartQuantity);
 
   return (
     <header className="flex justify-between items-center mb-4">

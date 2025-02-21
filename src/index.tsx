@@ -1,5 +1,6 @@
+import React from 'react'
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.jsx";
 import "./index.css";
 // Import the store we created
 import { store } from "./app/store.js";
@@ -8,7 +9,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement,);
 // Wrap <App /> with our react-redux Provider, passing in the store
 root.render(
   <BrowserRouter>
