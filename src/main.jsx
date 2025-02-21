@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 // Import the store we created
-import { store } from "./store.js";
+import { store } from "./app/store.js";
 // Import the Provider from `react-redux`
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";

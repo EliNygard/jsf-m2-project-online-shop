@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../cartSlice";
+import { addProduct } from "../../features/cart/cartSlice";
 import styles from "./index.module.css";
 import BaseButton from "../BaseButton";
 import PropTypes from "prop-types";
@@ -10,7 +10,7 @@ import { baseUrl } from "../../api/Constants";
 export function ProductList({ filterText }) {
   const dispatch = useDispatch();
 
-  const { data, isLoading, isError } = useFetch(baseUrl)
+  const { data, isLoading, isError } = useFetch(baseUrl);
 
   if (isLoading || !data) {
     return <div>Loading...</div>;
@@ -38,7 +38,6 @@ export function ProductList({ filterText }) {
 
   return (
     <>
-      <h2>Products</h2>
       <ul>
         {filteredProducts.map((product) => (
           <li key={product.id} className={styles.list}>
@@ -48,7 +47,7 @@ export function ProductList({ filterText }) {
               Add to cart
             </BaseButton>
             <Link to={`/product/${product.id}`}>
-            <BaseButton>View</BaseButton>
+              <BaseButton>View</BaseButton>
             </Link>
           </li>
         ))}

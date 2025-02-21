@@ -11,10 +11,12 @@ export function useFetch(url) {
         setIsError(false);
         setIsLoading(true);
 
-        const response = await fetch(url);
-        const json = await response.json();
+          const response = await fetch(url);
+          const json = await response.json();
+          const fetchedData = json.data
+          
+          setData(fetchedData);
 
-        setData(json.data);
       } catch (error) {
         console.error(error);
         setIsError(true);

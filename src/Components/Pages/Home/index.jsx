@@ -7,7 +7,7 @@ import ErrorBoundary from "../../ErrorBoundary";
 export function Home({ filterText, setFilterText }) {
   return (
     <div>
-      <h1>Home page</h1>
+      <h1 className="bg-amber-700">Home page</h1>
       <div className="shop-wrapper">
         <section>
           

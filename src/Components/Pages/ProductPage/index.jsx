@@ -1,15 +1,28 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../../hooks/useFetch";
+// import { useFetch } from "../../../hooks/useFetch";
 import { Helmet } from "react-helmet-async";
+import { ProductSingle } from "../../ProductSingle"
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchData } from "../../../features/product/productSlice";
 
 export function ProductPage() {
   // let params = useParams()
   // console.log("Product page with product id: ", params);
-  let { id } = useParams();
+  const { id } = useParams();
+  const dispatch = useDispatch()
 
-  const { data, isLoading, isError } = useFetch(
-    `https://v2.api.noroff.dev/online-shop/${id}`
-  );
+  // Select the fetched data and states from the Redux store:
+  const { data, isLoading, isError } = useSelector((state) => state.product)
+
+  useEffect(() => {
+    // Dispatch the thunk with the url:
+    dispatch(fetchData(`https://v2.api.noroff.dev/online-shop/${id}`))
+  }, [dispatch, id])
+
+  // const { data, isLoading, isError } = useFetch(
+  //   `https://v2.api.noroff.dev/online-shop/${id}`
+  // );
 
   if (isLoading || !data) {
     return <div>Loading...</div>;
@@ -30,33 +43,8 @@ export function ProductPage() {
           content={data.description}
         />
       </Helmet>
-      <section>
-        <img
-          src={data.image.url || "../../assets/react.svg"}
-          alt={data.image.alt || "Default product image"}
-        />
-        <h1>{data.title}</h1>
-        <p>{data.description}</p>
-        <ul>
-          {data.tags.map((tag) => (
-            <li key={tag}>Tag: {tag}</li>
-          ))}
-        </ul>
-        <ul>
-          {data.reviews.map(
-            (review) => (
-              console.log(review),
-              (
-                <li key={review.id}>
-                  <p>Rating: {review.rating}</p>
-                  <p>By: {review.username}</p>
-                  <p>{review.description}</p>
-                </li>
-              )
-            )
-          )}
-        </ul>
-      </section>
+      <ProductSingle data={data}></ProductSingle>
+       
     </>
   );
 }

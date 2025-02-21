@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Components/Layout";
 import { Home } from "./Components/Pages/Home";
-import { Products } from "./Components/Products";
+// import { Products } from "./Components/ProductSingle";
 import { RouteNotFound } from "./Components/Pages/NotFound";
 import { Contact } from "./Components/Pages/Contact";
 import { ProductPage } from "./Components/Pages/ProductPage";
@@ -45,7 +45,7 @@ export default function App() {
               <Home filterText={filterText} setFilterText={setFilterText} />
             }
           ></Route>
-          <Route path="products" element={<Products />}></Route>
+          {/* <Route path="products" element={<Products />}></Route> */}
           <Route path="product/:id" element={<ProductPage />}></Route>
           <Route path="contact" element={<Contact />}></Route>
           <Route path="*" element={<RouteNotFound />}></Route>
