@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async"
+import { ContactForm } from "../../ContactForm"
 
 export function Contact() {
     return (
@@ -9,6 +10,7 @@ export function Contact() {
         </Helmet>
         <div>
             <h1>Contact us</h1>
+            <ContactForm></ContactForm>
         </div>
         </>
     )
